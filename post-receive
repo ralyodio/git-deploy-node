@@ -16,4 +16,4 @@ cd "$tmpDir"
 # npm install
 # grunt deploy
 rsync -avz --delete --progress . "$www"
-#rm -rf "$tmpDir"
+rm -rf "$tmpDir"
