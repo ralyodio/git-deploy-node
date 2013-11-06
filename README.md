@@ -29,9 +29,8 @@ copy post-receive hook into repo
 Modify post-receive as needed. This is your build process.
 
 	npm install
-  npm update
+	npm update
 	grunt deploy
-
 
 ### local dev machine (laptop)
 
