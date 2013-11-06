@@ -1,0 +1,19 @@
+#!/bin/sh
+# build and deploy
+
+tmpDir=~/tmp/example.com
+www=~/www/example.com
+url=http://example.com
+
+mkdir -p $tmpDir
+git --work-tree="$tmpDir" checkout -f
+
+#change to tmp directory
+cd $tmpDir
+
+#replace with
+# npm update
+# npm install
+# grunt deploy
+rsync -avz --delete --progress . "$www"
+#rm -rf "$tmpDir"
