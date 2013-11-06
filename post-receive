@@ -5,11 +5,11 @@ tmpDir=~/tmp/example.com
 www=~/www/example.com
 url=http://example.com
 
-mkdir -p $tmpDir
+mkdir -p "$tmpDir"
 git --work-tree="$tmpDir" checkout -f
 
 #change to tmp directory
-cd $tmpDir
+cd "$tmpDir"
 
 #replace with
 # npm update
