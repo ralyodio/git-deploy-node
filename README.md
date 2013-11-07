@@ -13,35 +13,34 @@ this is where you will deploy to
 
 	mkdir p ~/deploy/example.com
 
-this is where the post-hook will export production code to (and served from by nginx)
+This is where the post-receive hook will export production code to (and served from by nginx)
 
 	mkdir -p ~/www/example.com
 
-setup deploy branch
+Setup deploy branch
 
 	cd ~/deploy/example.com
 	git init --bare
 
-copy post-receive hook into repo
+Copy post-receive hook into repo
 
 	cp ~/projects/git-deploy-node/post-receive ~/deploy/example.com/hooks/
 
 Modify post-receive as needed. This is your build process.
 
 	npm install
-	npm update
-	grunt deploy
+	NODE_ENV=prod grunt deploy
 
 ### local dev machine (laptop)
 
-add remote named 'live' to deploy to from local working copy
+add remote named 'prod' to deploy to from local working copy
 
-	git remote add live ssh://example.com/home/user/deploy/example.com
+	git remote add prod ssh://example.com/home/user/deploy/example.com
 
-list remotes
+List remotes
 
-	git remote
+	git remote -v
 
-deploy master branch to production
+Deploy master branch to production
 
-	git push live master
+	git push prod master
