@@ -15,5 +15,8 @@ npm install
 # deploy app
 NODE_ENV=$NODE_ENV grunt deploy
 
+# cleanup
+rm -rf "$tmp_dir"
+
 # restart app
 # /etc/init.d/node-app restart
