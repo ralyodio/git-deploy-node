@@ -1,26 +1,19 @@
 #!/bin/sh
-# build and deploy
+# deploy script
+NODE_ENV=test
+tmp_dir=~/tmp/test.example.com
 
-tmpDir=~/tmp/example.com
-www=~/www/example.com
-url=http://example.com
-
-mkdir -p "$tmpDir"
-git --work-tree="$tmpDir" checkout -f
+mkdir -p "$tmp_dir"
+git --work-tree="$tmp_dir" checkout -f
 
 # change to tmp directory
-cd "$tmpDir"
+cd "$tmp_dir"
 
-# update packages
-npm update
+# install packages
 npm install
 
-# replace with
-# grunt deploy
+# deploy app
+NODE_ENV=$NODE_ENV grunt deploy
 
-
-# copy files to www directory
-rsync -avz --delete --progress . "$www"
-
-# cleanup
-rm -rf "$tmpDir"
+# restart app
+# /etc/init.d/node-app restart
