@@ -8,12 +8,19 @@ url=http://example.com
 mkdir -p "$tmpDir"
 git --work-tree="$tmpDir" checkout -f
 
-#change to tmp directory
+# change to tmp directory
 cd "$tmpDir"
 
-#replace with
-# npm update
-# npm install
+# update packages
+npm update
+npm install
+
+# replace with
 # grunt deploy
+
+
+# copy files to www directory
 rsync -avz --delete --progress . "$www"
+
+# cleanup
 rm -rf "$tmpDir"
