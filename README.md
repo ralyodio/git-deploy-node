@@ -3,9 +3,21 @@ git-deploy-node
 
 Deploy a node app using git for continuous deployment.
 
-How to setup a git deployment to a production server:
+## Install node.js
 
-### production server
+Follow the instructions from Joyent:
+https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
+
+
+## How to setup a git deployment to a production server:
+
+Next we will setup a remote repository just for deployments on a server.
+
+When you are finished, you will be able to do continuous deployment using the following command:
+
+    git push prod master
+
+### Setup production server
 
 	ssh example.com
 
@@ -31,9 +43,9 @@ Modify post-receive as needed. This is your build process.
 	npm install
 	NODE_ENV=prod grunt deploy
 
-### local dev machine (laptop)
+### Setup local dev machine (laptop)
 
-add remote named 'prod' to deploy to from local working copy
+Add a remote named 'prod' to deploy to from local working copy (this is where you will deploy from).
 
 	git remote add prod ssh://example.com/home/user/deploy/example.com
 
@@ -44,3 +56,19 @@ List remotes
 Deploy master branch to production
 
 	git push prod master
+
+### Tips
+
+You can repeat this process for 'stage' and 'test' environments as well. I usually use a separate sub-domain like 'test.example.com' for a new environment.
+
+You can add a remote called 'test' instead of 'prod':
+
+	git remote add test ssh://example.com/home/user/deploy/test.example.com
+
+...and then deploy with:
+
+    git push test master
+
+Its a good idea to tag your release with the following command (although I always deploy master to environments, as the post-receive hook only supports master branch).
+
+    git tag v0.0.1
