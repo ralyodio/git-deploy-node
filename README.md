@@ -9,11 +9,11 @@ Follow the instructions from Joyent:
 https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 
 
-## How to setup a git deployment to a production server:
+## Introduction
 
-Next we will setup a remote repository just for deployments on a server.
+Next we will setup a remote repository just for deployments on the production server.
 
-When you are finished, you will be able to do continuous deployment using the following command:
+When you are finished, you will be able to do continuous deployment using the following command (from your local machine):
 
     git push prod master
 
