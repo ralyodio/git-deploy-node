@@ -11,7 +11,7 @@ https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 
 ## Introduction
 
-Next we will setup a remote repository just for deployments on the production server.
+We will setup a remote repository just for deployments on the production server.
 
 When you are finished, you will be able to do continuous deployment using the following command (from your local machine):
 
@@ -21,7 +21,7 @@ When you are finished, you will be able to do continuous deployment using the fo
 
 	ssh example.com
 
-this is where you will deploy to
+This is where you will deploy to
 
 	mkdir p ~/deploy/example.com
 
