@@ -22,6 +22,7 @@ NODE_ENV=$NODE_ENV grunt deploy
 forever restartall
 
 # verify server is up
+sleep 3
 curl -I# http://$domain
 curl -I# http://$domain/api
 
