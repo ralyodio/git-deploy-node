@@ -1,7 +1,9 @@
 #!/bin/sh
 # deploy script
+
 NODE_ENV=test
-tmp_dir=~/tmp/test.example.com
+domain=example.com
+tmp_dir=~/tmp/$domain
 
 mkdir -p "$tmp_dir"
 git --work-tree="$tmp_dir" checkout -f
@@ -15,8 +17,13 @@ npm install
 # deploy app
 NODE_ENV=$NODE_ENV grunt deploy
 
-# cleanup
-rm -rf "$tmp_dir"
-
 # restart app
 # /etc/init.d/node-app restart
+forever restartall
+
+# verify server is up
+curl -I# http://$domain
+curl -I# http://$domain/api
+
+# cleanup
+rm -rf "$tmp_dir"
