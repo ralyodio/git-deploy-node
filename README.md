@@ -84,3 +84,12 @@ Download latest node source code and unpack, then build:
     ./configure --prefix=$HOME/opt/node
     make
     make install
+
+Mac:
+
+    brew install node
+
+Other platforms (Linux, Windows):
+
+Follow the instructions from Joyent:
+https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
