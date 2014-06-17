@@ -72,3 +72,15 @@ You can add a remote called 'test' instead of 'prod':
 Its a good idea to tag your release with the following command (although I always deploy master to environments, as the post-receive hook only supports master branch).
 
     git tag v0.0.1
+
+### Installing node
+
+For local installations where you do not have root:
+
+    mkdir -p $HOME/opt/node
+
+Download latest node source code and unpack, then build:
+
+    ./configure --prefix=$HOME/opt/node
+    make
+    make install
