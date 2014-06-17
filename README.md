@@ -23,7 +23,7 @@ When you are finished, you will be able to do continuous deployment using the fo
 
 This is where you will deploy to
 
-	mkdir p ~/deploy/example.com
+	mkdir -p ~/deploy/example.com
 
 This is where the post-receive hook will export production code to (and served from by nginx)
 
