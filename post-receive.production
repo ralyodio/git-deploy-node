@@ -1,0 +1,40 @@
+#!/bin/sh
+# deploy script
+
+NODE_ENV=production
+domain=example.com
+tmp_dir=~/tmp/$domain
+www_dir=~/www
+
+mkdir -p "$tmp_dir"
+git --work-tree="$tmp_dir" checkout -f
+
+# change to tmp directory
+cd "$tmp_dir"
+
+# install packages
+npm install --production
+
+# sync tmp to www directory
+version=`jq -r .version $tmp_dir/package.json`
+version_path=$www_dir/versions/$domain@$version
+echo "syncing $version to $version_path";
+rsync -az --stats --delete $tmp_dir/ $version_path/
+
+echo "symlinking ./www/$domain"
+rm ${www_dir}/${domain}
+ln -s ${version_path} ${www_dir}/${domain}
+
+# restart app
+echo "restarting app...";
+forever restartall
+
+## run post-deploy commands
+# generate sitemap
+# NODE_ENV=$NODE_ENV node ${www_dir}/${domain}/lib/bin/sitemaps.js
+
+# cleanup
+cd ~/
+rm -rf "$tmp_dir"
+
+echo "deployed to $NODE_ENV";

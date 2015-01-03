@@ -1,8 +1,8 @@
 #!/bin/sh
 # deploy script
 
-NODE_ENV=production
-domain=example.com
+NODE_ENV=test
+domain=test.example.com
 tmp_dir=~/tmp/$domain
 www_dir=~/www
 
@@ -19,22 +19,22 @@ npm install
 version=`jq -r .version $tmp_dir/package.json`
 version_path=$www_dir/versions/$domain@$version
 echo "syncing $version to $version_path";
-#rsync -az --stats --delete <%= tmp_site_path %>/ <%= version_path %>/
-rsync -az --stats $tmp_dir/ $version_path/
+rsync -az --stats --delete $tmp_dir/ $version_path/
 
 echo "symlinking ./www/$domain"
 rm ${www_dir}/${domain}
 ln -s ${version_path} ${www_dir}/${domain}
 
 # restart app
-# /etc/init.d/node-app restart
 echo "restarting app...";
 forever restartall
 
-# verify server is up
-sleep 3
-curl -I# http://$domain
-curl -I# http://$domain/api
+## run post-deploy commands
+# generate sitemap
+# NODE_ENV=$NODE_ENV node ${www_dir}/${domain}/lib/bin/sitemaps.js
 
 # cleanup
+cd ~/
 rm -rf "$tmp_dir"
+
+echo "deployed to $NODE_ENV";

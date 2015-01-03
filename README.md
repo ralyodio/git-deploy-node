@@ -3,12 +3,6 @@ git-deploy-node
 
 Deploy a node app using git for continuous deployment.
 
-## Install node.js
-
-Follow the instructions from Joyent:
-https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
-
-
 ## Introduction
 
 We will setup a remote repository just for deployments on the production server.
@@ -75,6 +69,12 @@ Its a good idea to tag your release with the following command (although I alway
 
 ### Installing node
 
+Mac:
+
+    brew install node
+
+From source: http://nodejs.org/download/
+
 For local installations where you do not have root:
 
     mkdir -p $HOME/opt/node
@@ -85,9 +85,6 @@ Download latest node source code and unpack, then build:
     make
     make install
 
-Mac:
-
-    brew install node
 
 Other platforms (Linux, Windows):
 
