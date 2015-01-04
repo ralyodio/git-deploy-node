@@ -9,7 +9,7 @@ We will setup a remote repository just for deployments on the production server.
 
 When you are finished, you will be able to do continuous deployment using the following command (from your local machine):
 
-    git push prod master
+    git push production master
 
 ### Setup production server
 
@@ -21,7 +21,11 @@ This is where you will deploy to
 
 This is where the post-receive hook will export production code to (and served from by nginx)
 
-	mkdir -p ~/www/example.com
+	mkdir -p ~/www/versions
+	
+This is where logs will go:
+
+    mkdir -p ~/log
 
 Setup deploy branch
 
@@ -35,13 +39,13 @@ Copy post-receive hook into repo
 Modify post-receive as needed. This is your build process.
 
 	npm install
-	NODE_ENV=prod grunt deploy
+	NODE_ENV=production grunt deploy
 
 ### Setup local dev machine (laptop)
 
 Add a remote named 'prod' to deploy to from local working copy (this is where you will deploy from).
 
-	git remote add prod ssh://example.com/home/user/deploy/example.com
+	git remote add production ssh://example.com/home/user/deploy/example.com
 
 List remotes
 
@@ -49,7 +53,7 @@ List remotes
 
 Deploy master branch to production
 
-	git push prod master
+	git push production master
 
 ### Tips
 
