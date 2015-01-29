@@ -94,3 +94,7 @@ Other platforms (Linux, Windows):
 
 Follow the instructions from Joyent:
 https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/chovy/git-deploy-node/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
